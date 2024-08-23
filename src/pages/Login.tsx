@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import { useState } from "react";
 import { login } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,8 @@ const Login = () => {
     general?: string;
   }>({});
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
+
 
   const handleLogin = async () => {
     let valid = true;
@@ -32,9 +35,10 @@ const Login = () => {
     if (valid) {
       try {
         const result = await login(email, password);
-        console.log(result);
-        localStorage.setItem("authToken", result.access_token);
-        navigate("/dashboard");
+        authContext?.login(result.access_token); // Mise à jour du contexte
+        // console.log(result);
+        // localStorage.setItem("authToken", result.access_token);
+        navigate("/");
       } catch (error) {
         setErrors((prevErrors) => ({
           ...prevErrors,

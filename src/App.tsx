@@ -8,24 +8,24 @@ import DeliveryPage from "./pages/DeliveryPage";
 import AddDelivererPage from "./pages/AddDelivererPage";
 import StoreOwnerPage from "./pages/StoreOwnerPage";
 import AddStoreOwnerPage from "./pages/AddStoreOwnerPage";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route element={<Layout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/deliverers" element={<DeliveryPage />} />
             <Route path="/add-deliverer" element={<AddDelivererPage />} />
             <Route path="/storeOwners" element={<StoreOwnerPage />} />
             <Route path="/add-storeOwner" element={<AddStoreOwnerPage />} />
-
           </Route>
         </Routes>
       </Router>
-    </>
+    </AuthProvider>
   );
 }
 
