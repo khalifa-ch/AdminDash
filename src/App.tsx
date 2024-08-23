@@ -4,6 +4,10 @@ import Login from "./pages/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
+import DeliveryPage from "./pages/DeliveryPage";
+import AddDelivererPage from "./pages/AddDelivererPage";
+import StoreOwnerPage from "./pages/StoreOwnerPage";
+import AddStoreOwnerPage from "./pages/AddStoreOwnerPage";
 
 function App() {
   return (
@@ -13,6 +17,11 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route element={<Layout />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/deliverers" element={<DeliveryPage />} />
+            <Route path="/add-deliverer" element={<AddDelivererPage />} />
+            <Route path="/storeOwners" element={<StoreOwnerPage />} />
+            <Route path="/add-storeOwner" element={<AddStoreOwnerPage />} />
+
           </Route>
         </Routes>
       </Router>
