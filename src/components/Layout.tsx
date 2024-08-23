@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode, useContext } from "react";
 import {
   Box,
   Drawer,
@@ -9,26 +9,34 @@ import {
   ListItemText,
   Toolbar,
   AppBar,
+  Button,
 } from "@mui/material";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import { AddCircleOutlineOutlined, SubjectOutlined } from "@mui/icons-material";
+import { AuthContext } from "../context/AuthContext";
 
 const drawerWidth = 240;
 
 const Layout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const authContext = useContext(AuthContext);
 
+  const handleLogout = () => {
+    authContext?.logout();
+    // Redirection après déconnexion, si nécessaire
+    navigate("/login");
+  };
   const menuItems = [
     {
       text: "Livreurs",
       icon: <SubjectOutlined color="primary" />,
-      path: "/",
+      path: "/deliverers",
     },
     {
       text: "Magasins",
       icon: <AddCircleOutlineOutlined color="primary" />,
-      path: "/create",
+      path: "/storeOwners",
     },
   ];
 
@@ -45,8 +53,14 @@ const Layout: React.FC = () => {
         elevation={0}
       >
         <Toolbar>
-          <Typography sx={{ flexGrow: 1 }}>khalifa chelbi</Typography>
-          <Typography>Mario</Typography>
+          <Typography sx={{ flexGrow: 1 }}>
+            {localStorage.getItem("firstName") +
+              " " +
+              localStorage.getItem("lastName")}
+          </Typography>
+          <Button color="inherit" onClick={handleLogout}>
+            Logout
+          </Button>{" "}
         </Toolbar>
       </AppBar>
 

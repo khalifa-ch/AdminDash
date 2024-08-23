@@ -9,6 +9,7 @@ import AddDelivererPage from "./pages/AddDelivererPage";
 import StoreOwnerPage from "./pages/StoreOwnerPage";
 import AddStoreOwnerPage from "./pages/AddStoreOwnerPage";
 import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
@@ -17,11 +18,13 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route element={<Layout />}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/deliverers" element={<DeliveryPage />} />
-            <Route path="/add-deliverer" element={<AddDelivererPage />} />
-            <Route path="/storeOwners" element={<StoreOwnerPage />} />
-            <Route path="/add-storeOwner" element={<AddStoreOwnerPage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/deliverers" element={<DeliveryPage />} />
+              <Route path="/add-deliverer" element={<AddDelivererPage />} />
+              <Route path="/storeOwners" element={<StoreOwnerPage />} />
+              <Route path="/add-storeOwner" element={<AddStoreOwnerPage />} />
+            </Route>
           </Route>
         </Routes>
       </Router>

@@ -6,7 +6,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
-export const AuthContext = React.createContext<AuthContextType | undefined>(
+export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );
 
@@ -18,11 +18,12 @@ export const AuthProvider: React.FC<{
   const login = (token: string) => {
     localStorage.setItem("authToken", token);
     setIsAuthenticated(true);
-    console.log(isAuthenticated);
   };
 
   const logout = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
     setIsAuthenticated(false);
   };
 

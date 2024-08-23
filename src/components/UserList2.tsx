@@ -26,7 +26,7 @@ const UserList2: React.FC<UserListProps> = ({ users }) => {
   const navigate = useNavigate(); // Initialize navigate
 
   const handleDelete = async (id: string) => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur?")) {
       try {
         await deleteUser(Number(id)); // Use deleteUser function
         navigate(0); // Refresh the page by navigating to the same route

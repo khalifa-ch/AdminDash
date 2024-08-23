@@ -16,7 +16,6 @@ const Login = () => {
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
-
   const handleLogin = async () => {
     let valid = true;
     let errors: { email?: string; password?: string } = {};
@@ -36,8 +35,8 @@ const Login = () => {
       try {
         const result = await login(email, password);
         authContext?.login(result.access_token); // Mise à jour du contexte
-        // console.log(result);
-        // localStorage.setItem("authToken", result.access_token);
+        localStorage.setItem("firstName", result.firstName);
+        localStorage.setItem("lastName", result.lastName);
         navigate("/");
       } catch (error) {
         setErrors((prevErrors) => ({
@@ -100,14 +99,15 @@ const Login = () => {
         <Box
           sx={{
             marginTop: 2,
-            color: 'error.main', 
-            fontSize: '0.875rem',
-            textAlign: 'center',
+            color: "error.main",
+            fontSize: "0.875rem",
+            textAlign: "center",
           }}
         >
           {errors.general}
         </Box>
-      )}    </Box>
+      )}{" "}
+    </Box>
   );
 };
 
