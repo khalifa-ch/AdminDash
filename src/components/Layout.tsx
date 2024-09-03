@@ -30,13 +30,18 @@ const Layout: React.FC = () => {
   const menuItems = [
     {
       text: "Livreurs",
-      icon: <SubjectOutlined color="primary" />,
+      icon: <AddCircleOutlineOutlined color="primary" />,
       path: "/deliverers",
     },
     {
-      text: "Magasins",
+      text: "prop... des magasins",
       icon: <AddCircleOutlineOutlined color="primary" />,
       path: "/storeOwners",
+    },
+    {
+      text: "Voitures",
+      icon: <AddCircleOutlineOutlined color="primary" />,
+      path: "/cars",
     },
   ];
 
@@ -73,8 +78,8 @@ const Layout: React.FC = () => {
         }}
         anchor="left"
       >
-        <Box sx={{ padding: 2 }}>
-          <Typography variant="h5">Ninja Notes</Typography>
+        <Box sx={{ padding: 3 }}>
+          <Typography variant="h5">Livraison</Typography>
         </Box>
 
         {/* Links/List Section */}

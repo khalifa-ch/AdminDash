@@ -58,7 +58,8 @@ const AddDelivererPage: React.FC = () => {
     if (!formData.password) {
       newErrors.password = "Le mot de passe est requis";
     } else if (formData.password.length < 6) {
-      newErrors.password = "Le mot de passe doit contenir au moins 6 caractères";
+      newErrors.password =
+        "Le mot de passe doit contenir au moins 6 caractères";
     }
 
     setErrors(newErrors);
@@ -88,7 +89,6 @@ const AddDelivererPage: React.FC = () => {
       </Typography>
       <form onSubmit={handleSubmit}>
         <TextField
-          
           name="firstName"
           label="Prénom"
           variant="outlined"
@@ -100,7 +100,6 @@ const AddDelivererPage: React.FC = () => {
           helperText={errors.firstName}
         />
         <TextField
-          
           name="lastName"
           label="Nom"
           variant="outlined"
@@ -112,7 +111,6 @@ const AddDelivererPage: React.FC = () => {
           helperText={errors.lastName}
         />
         <TextField
-          
           name="email"
           label="Email"
           type="email"
@@ -125,7 +123,6 @@ const AddDelivererPage: React.FC = () => {
           helperText={errors.email}
         />
         <TextField
-          
           name="password"
           label="Mot de passe"
           type="password"

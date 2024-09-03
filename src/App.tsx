@@ -10,6 +10,8 @@ import StoreOwnerPage from "./pages/StoreOwnerPage";
 import AddStoreOwnerPage from "./pages/AddStoreOwnerPage";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import CarPage from "./pages/CarPage";
+import AddCarPage from "./pages/AddCarPage";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
               <Route path="/add-deliverer" element={<AddDelivererPage />} />
               <Route path="/storeOwners" element={<StoreOwnerPage />} />
               <Route path="/add-storeOwner" element={<AddStoreOwnerPage />} />
+              <Route path="/cars" element={<CarPage />} />
+              <Route path="/add-car" element={<AddCarPage />} />
             </Route>
           </Route>
         </Routes>
