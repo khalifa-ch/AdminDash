@@ -13,6 +13,7 @@ import { deleteEntrepot } from "../services/entrepotService"; // Suppose que tu 
 
 interface Entrepot {
   id: string;
+  name: string;
   capacity: number;
   address: string;
   city: { name: string };
@@ -39,9 +40,19 @@ const EntrepotList: React.FC<EntrepotListProps> = ({ entrepots }) => {
   const handleViewOrders = (entrepotId: string) => {
     navigate(`/entrepots/orders?entrepotId=${entrepotId}`);
   };
-
+  const handleAddEntrepot = () => {
+    navigate("/add-entrepot");
+  };
   return (
     <Box>
+      <Button
+        color="primary"
+        variant="contained"
+        onClick={handleAddEntrepot}
+        sx={{ mb: 2 }}
+      >
+        Ajouter un Entrepot
+      </Button>
       <List sx={{ width: "100%", bgcolor: "background.paper" }}>
         {entrepots.map((entrepot) => (
           <ListItem
@@ -50,8 +61,8 @@ const EntrepotList: React.FC<EntrepotListProps> = ({ entrepots }) => {
           >
             <Box sx={{ flex: 1 }}>
               <ListItemText
-                primary={`Capacity: ${entrepot.capacity}`}
-                secondary={`${entrepot.address}, ${entrepot.city.name}`}
+                primary={` ${entrepot.name}`}
+                secondary={`${entrepot.capacity} Kg ,${entrepot.address}, ${entrepot.city.name}`}
               />
             </Box>
             <Button

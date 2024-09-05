@@ -6,6 +6,7 @@ import EntrepotList from "../components/EntrepotList";
 
 interface Entrepot {
   id: string;
+  name:string;
   capacity: number;
   address: string;
   city: { name: string };

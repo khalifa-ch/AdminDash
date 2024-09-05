@@ -30,3 +30,28 @@ export const deleteEntrepot = async (entrepotId: number): Promise<void> => {
     throw error;
   }
 };
+// src/services/entrepotService.ts
+
+export const addEntrepot = async (
+  name: string,
+  capacity: number,
+  address: string,
+  cityId: string
+) => {
+  try {
+    const token = localStorage.getItem("authToken") || "";
+    const response = await axios.post(
+      API_URL,
+      { name, capacity, address, cityId },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error adding entrepot:", error);
+    throw error;
+  }
+};

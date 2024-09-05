@@ -17,6 +17,7 @@ import OrderPage from "./pages/OrderPage";
 import AddOrderForm from "./pages/AddOrderForm";
 import AddStorePage from "./pages/AddStorePage";
 import EntrepotPage from "./pages/EntrepotPage";
+import AddEntrepot from "./pages/AddEntrepot";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="/stores/orders" element={<OrderPage />} />
               <Route path="/add-order" element={<AddOrderForm />} />
               <Route path="/MyEntrepots" element={<EntrepotPage />} />
+              <Route path="/add-entrepot" element={<AddEntrepot />} />
             </Route>
           </Route>
         </Routes>
