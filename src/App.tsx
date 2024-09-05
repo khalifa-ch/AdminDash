@@ -16,6 +16,7 @@ import StorePage from "./pages/StorePage";
 import OrderPage from "./pages/OrderPage";
 import AddOrderForm from "./pages/AddOrderForm";
 import AddStorePage from "./pages/AddStorePage";
+import EntrepotPage from "./pages/EntrepotPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="/add-store" element={<AddStorePage />} />
               <Route path="/stores/orders" element={<OrderPage />} />
               <Route path="/add-order" element={<AddOrderForm />} />
+              <Route path="/MyEntrepots" element={<EntrepotPage />} />
             </Route>
           </Route>
         </Routes>
