@@ -16,6 +16,7 @@ interface User {
   firstName: string;
   lastName: string;
   email: string; // Added email field
+  city: { name: string };
 }
 
 interface UserListProps {
@@ -54,7 +55,11 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
             <Box sx={{ flex: 1 }}>
               <ListItemText
                 primary={`${user.firstName} ${user.lastName}`}
-                secondary={user.email}
+                secondary={`${user.email}`}
+              />
+               <ListItemText
+                secondary={`${user.city?.name}`}
+               
               />
             </Box>
             <IconButton color="primary" onClick={() => handleDelete(user.id)}>

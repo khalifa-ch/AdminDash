@@ -25,6 +25,8 @@ export const getMyOrders = async (storeId?: string) => {
 export const createOrder = async (orderData: {
   weight: number;
   storeId: string;
+  clientPhoneNumber: string;
+  cityId: string;
 }) => {
   try {
     const token = localStorage.getItem("authToken"); // Récupère le token JWT

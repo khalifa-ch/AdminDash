@@ -18,6 +18,8 @@ interface Order {
   weight: number;
   price: number;
   status: string;
+  clientPhoneNumber: string;
+  destination: { name: string };
 }
 
 const useQuery = () => {
@@ -93,6 +95,12 @@ const OrderPage: React.FC = () => {
                   </Typography>
                   <Typography variant="body2">
                     Statut: {translateStatus(order.status)}
+                  </Typography>
+                  <Typography variant="body2">
+                    Numéro Du Client: {order.clientPhoneNumber}
+                  </Typography>
+                  <Typography variant="body2">
+                   Destination: {order.destination.name}
                   </Typography>
                   <Box>
                     <IconButton
