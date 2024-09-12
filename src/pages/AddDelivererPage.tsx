@@ -1,15 +1,15 @@
-// src/pages/AddDelivererPage.tsx
-
-import React, { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { addDeliverer } from "../services/userCrudService";
+import { getCities } from "../services/storeService";
 
 interface FormData {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
+  cityId: string;
 }
 
 const AddDelivererPage: React.FC = () => {
@@ -18,23 +18,41 @@ const AddDelivererPage: React.FC = () => {
     lastName: "",
     email: "",
     password: "",
+    cityId: "",
   });
 
+  const [cities, setCities] = useState<{ id: number; name: string }[]>([]);
   const [errors, setErrors] = useState<{
     firstName?: string;
     lastName?: string;
     email?: string;
     password?: string;
+    cityId?: string; // Ajout des erreurs de cityId
     general?: string;
   }>({});
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      const citiesData = await getCities();
+      setCities(citiesData);
+    };
+    fetchCities();
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value,
+    });
+  };
+
+  const handleCityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      cityId: event.target.value,
     });
   };
 
@@ -62,6 +80,10 @@ const AddDelivererPage: React.FC = () => {
         "Le mot de passe doit contenir au moins 6 caractères";
     }
 
+    if (!formData.cityId) {
+      newErrors.cityId = "La ville est requise";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -71,7 +93,7 @@ const AddDelivererPage: React.FC = () => {
 
     if (validate()) {
       try {
-        await addDeliverer(formData);
+        await addDeliverer(formData); // Envoie l'ID de la ville avec les autres données
         navigate("/deliverers");
       } catch (error) {
         setErrors((prevErrors) => ({
@@ -134,6 +156,22 @@ const AddDelivererPage: React.FC = () => {
           error={!!errors.password}
           helperText={errors.password}
         />
+        <TextField
+          label="Ville"
+          select
+          value={formData.cityId} // Utilise formData.cityId
+          onChange={handleCityChange} // Utilise handleCityChange
+          fullWidth
+          sx={{ mb: 2 }}
+          error={!!errors.cityId}
+          helperText={errors.cityId}
+        >
+          {cities.map((city) => (
+            <MenuItem key={city.id} value={city.id.toString()}>
+              {city.name}
+            </MenuItem>
+          ))}
+        </TextField>
         {errors.general && (
           <Typography color="error" variant="body2">
             {errors.general}

@@ -21,6 +21,7 @@ export const addDeliverer = async (delivererData: {
   lastName: string;
   email: string;
   password: string;
+  cityId:string
 }) => {
   try {
     await axios.post(`${API_URL}/user/deliverer`, delivererData);
