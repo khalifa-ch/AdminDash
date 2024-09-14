@@ -110,3 +110,23 @@ export const assignEntrepotToOrder = async (
     throw error;
   }
 };
+export const getOrdersInEntrepot = async (entrepotId: number) => {
+  try {
+    const token = localStorage.getItem("authToken"); // Récupère le token JWT
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: { entrepotId },
+    };
+
+    const response = await axios.get(
+      `${API_URL}/getMyOrdersInEntrepot`,
+      config
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    throw error;
+  }
+};

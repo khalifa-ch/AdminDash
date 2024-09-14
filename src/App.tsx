@@ -20,6 +20,7 @@ import EntrepotPage from "./pages/EntrepotPage";
 import AddEntrepot from "./pages/AddEntrepot";
 import PickupOrdersPage from "./pages/PickupOrdersPage";
 import AssignToEntrepotPage from "./pages/AssignToEntrepotPage";
+import OrdersInEntrepotPage from "./pages/OrdersInEntrepotPage";
 
 function App() {
   return (
@@ -43,8 +44,14 @@ function App() {
               <Route path="/MyEntrepots" element={<EntrepotPage />} />
               <Route path="/add-entrepot" element={<AddEntrepot />} />
               <Route path="/PickupOrders" element={<PickupOrdersPage />} />
-              <Route path="/assign-to-entrepot/:orderId" element={<AssignToEntrepotPage />} />
-
+              <Route
+                path="/assign-to-entrepot/:orderId"
+                element={<AssignToEntrepotPage />}
+              />
+              <Route
+                path="/entrepots/orders"
+                element={<OrdersInEntrepotPage />}
+              />
             </Route>
           </Route>
         </Routes>

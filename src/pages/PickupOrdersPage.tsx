@@ -20,20 +20,7 @@ interface Order {
   store: { name: string; address: string }; // Nom du magasin associé à la commande
 }
 
-const translateStatus = (status: string) => {
-  switch (status) {
-    case "Pending":
-      return "En attente";
-    case "Shipped":
-      return "Expédié";
-    case "Delivered":
-      return "Livré";
-    case "Cancelled":
-      return "Annulé";
-    default:
-      return status;
-  }
-};
+
 
 const PickupOrdersPage: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
