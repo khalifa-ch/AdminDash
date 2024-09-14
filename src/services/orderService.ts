@@ -63,3 +63,50 @@ export const deleteOrder = async (id: number) => {
     throw error;
   }
 };
+export const getOrdersReadyForPickup = async () => {
+  try {
+    const token = localStorage.getItem("authToken"); // Récupérer le token JWT
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    // Requête GET pour récupérer les commandes prêtes pour l'expédition
+    const response = await axios.get(`${API_URL}/pickupOrders`, config);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Erreur lors de la récupération des commandes prêtes à être expédiées:",
+      error
+    );
+    throw error;
+  }
+};
+
+export const assignEntrepotToOrder = async (
+  orderId: number,
+  entrepotId: number
+) => {
+  try {
+    const token = localStorage.getItem("authToken"); // Récupérer le token JWT
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await axios.patch(
+      `${API_URL}/assign-entrepot/${orderId}`,
+      { entrepotId },
+      config
+    );
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Erreur lors de la récupération des commandes prêtes à être expédiées:",
+      error
+    );
+    throw error;
+  }
+};
