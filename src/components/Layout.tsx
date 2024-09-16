@@ -27,23 +27,50 @@ const Layout: React.FC = () => {
     // Redirection après déconnexion, si nécessaire
     navigate("/login");
   };
-  const menuItems = [
-    {
-      text: "Livreurs",
-      icon: <AddCircleOutlineOutlined color="primary" />,
-      path: "/deliverers",
-    },
-    {
-      text: "prop... des magasins",
-      icon: <AddCircleOutlineOutlined color="primary" />,
-      path: "/storeOwners",
-    },
-    {
-      text: "Voitures",
-      icon: <AddCircleOutlineOutlined color="primary" />,
-      path: "/cars",
-    },
-  ];
+  const role = localStorage.getItem("role");
+  let menuItems;
+
+  if (role === "admin") {
+    menuItems = [
+      {
+        text: "Livreurs",
+        icon: <AddCircleOutlineOutlined color="primary" />,
+        path: "/deliverers",
+      },
+      {
+        text: "prop... des magasins",
+        icon: <AddCircleOutlineOutlined color="primary" />,
+        path: "/storeOwners",
+      },
+      {
+        text: " Mes Voitures",
+        icon: <AddCircleOutlineOutlined color="primary" />,
+        path: "/cars",
+      },
+
+      {
+        text: "Mes Enterpots",
+        icon: <AddCircleOutlineOutlined color="primary" />,
+        path: "/MyEntrepots",
+      },
+    ];
+  } else if (role === "storeowner") {
+    menuItems = [
+      {
+        text: "Mes Magasins",
+        icon: <AddCircleOutlineOutlined color="primary" />,
+        path: "/MyStores",
+      },
+    ];
+  } else {
+    menuItems = [
+      {
+        text: "Commandes ",
+        icon: <AddCircleOutlineOutlined color="primary" />,
+        path: "/PickupOrders",
+      },
+    ];
+  }
 
   return (
     <Box sx={{ display: "flex" }}>

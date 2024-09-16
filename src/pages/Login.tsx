@@ -37,6 +37,7 @@ const Login = () => {
         authContext?.login(result.access_token); // Mise à jour du contexte
         localStorage.setItem("firstName", result.firstName);
         localStorage.setItem("lastName", result.lastName);
+        localStorage.setItem("role", result.role);
         navigate("/");
       } catch (error) {
         setErrors((prevErrors) => ({
