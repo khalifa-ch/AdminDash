@@ -130,3 +130,44 @@ export const getOrdersInEntrepot = async (entrepotId: number) => {
     throw error;
   }
 };
+export const getShippedOrders = async () => {
+  try {
+    const token = localStorage.getItem("authToken"); // Récupérer le token JWT
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    // Requête GET pour récupérer les commandes prêtes pour l'expédition
+    const response = await axios.get(`${API_URL}/ShippedOrders`, config);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Erreur lors de la récupération des commandes prêtes à être expédiées:",
+      error
+    );
+    throw error;
+  }
+};
+
+export const getAllOrders = async () => {
+  try {
+    const token = localStorage.getItem("authToken"); // Récupérer le token JWT
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    // Requête GET pour récupérer les commandes prêtes pour l'expédition
+    const response = await axios.get(`${API_URL}`, config);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Erreur lors de la récupération des commandes prêtes à être expédiées:",
+      error
+    );
+    throw error;
+  }
+};

@@ -32,7 +32,11 @@ export const deleteStore = async (storeId: number): Promise<void> => {
   }
 };
 
-export const addStore = async (storeData: { name: string; address: string; city: string }) => {
+export const addStore = async (storeData: {
+  name: string;
+  address: string;
+  city: string;
+}) => {
   try {
     const token = localStorage.getItem("authToken") || "";
     const response = await axios.post(
@@ -65,6 +69,21 @@ export const getCities = async () => {
     return response.data;
   } catch (error) {
     console.error("Error fetching cities:", error);
+    throw error;
+  }
+};
+
+export const getAllStores = async () => {
+  try {
+    const token = localStorage.getItem("authToken") || "";
+    const response = await axios.get(`${API_URL}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching entrepots:", error);
     throw error;
   }
 };

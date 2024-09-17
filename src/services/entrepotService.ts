@@ -70,3 +70,18 @@ export const getAvailbleEntrepots = async () => {
     throw error;
   }
 };
+
+export const getAllEntrepots = async () => {
+  try {
+    const token = localStorage.getItem("authToken") || "";
+    const response = await axios.get(`${API_URL}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching entrepots:", error);
+    throw error;
+  }
+};
