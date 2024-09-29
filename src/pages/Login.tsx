@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box, Typography } from "@mui/material";
 import { useState } from "react";
 import { login } from "../services/authService";
 import { useNavigate } from "react-router-dom";
@@ -60,6 +60,9 @@ const Login = () => {
         padding: 2,
       }}
     >
+      <Typography variant="h4" sx={{ marginBottom: 4 }}>
+        Bienvenue dans QuickShip
+      </Typography>
       <TextField
         label="Email"
         variant="outlined"

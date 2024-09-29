@@ -38,7 +38,7 @@ const Layout: React.FC = () => {
         path: "/deliverers",
       },
       {
-        text: "prop... des magasins",
+        text: "prop.des magasins",
         icon: <AddCircleOutlineOutlined color="primary" />,
         path: "/storeOwners",
       },
@@ -106,7 +106,7 @@ const Layout: React.FC = () => {
         anchor="left"
       >
         <Box sx={{ padding: 3 }}>
-          <Typography variant="h5">Livraison</Typography>
+          <Typography variant="h5">QuickShip</Typography>
         </Box>
 
         {/* Links/List Section */}
