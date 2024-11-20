@@ -11,7 +11,7 @@ import {
   AppBar,
   Button,
 } from "@mui/material";
-import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import { useNavigate, useLocation, Outlet, Link } from "react-router-dom";
 import { AddCircleOutlineOutlined, SubjectOutlined } from "@mui/icons-material";
 import { AuthContext } from "../context/AuthContext";
 
@@ -24,7 +24,6 @@ const Layout: React.FC = () => {
 
   const handleLogout = () => {
     authContext?.logout();
-    // Redirection après déconnexion, si nécessaire
     navigate("/login");
   };
   const role = localStorage.getItem("role");
@@ -106,7 +105,9 @@ const Layout: React.FC = () => {
         anchor="left"
       >
         <Box sx={{ padding: 3 }}>
-          <Typography variant="h5">QuickShip</Typography>
+          <Link to={"/"}>
+            <Typography variant="h5">QuickShip</Typography>
+          </Link>
         </Box>
 
         {/* Links/List Section */}
